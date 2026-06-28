@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SCPR Career Guidance Survey - Smart Career Path Recommendation System">
+  <title>SCPR Career Guidance Survey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .optional-mark {
+      color: var(--color-text-secondary);
+      font-size: 0.875rem;
+      font-weight: 400;
+      margin-left: 0.5rem;
+    }
+    .success-animation {
+      margin: 2rem auto;
+      width: 80px;
+      height: 80px;
+    }
+    .checkmark {
+      width: 80px;
+      height: 80px;
+    }
+    .checkmark-circle {
+      stroke: var(--color-success);
+      stroke-width: 2;
+      stroke-dasharray: 166;
+      stroke-dashoffset: 166;
+      fill: none;
+      animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+    }
+    .checkmark-check {
+      stroke: var(--color-success);
+      stroke-width: 2;
+      stroke-dasharray: 48;
+      stroke-dashoffset: 48;
+      animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
+    }
+    @keyframes stroke {
+      100% { stroke-dashoffset: 0; }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .success-screen {
+      animation: fadeInUp 0.5s ease forwards;
+    }
+    .scale-input .radio-option input[type="radio"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 44px;
+      height: 44px;
+      border: 2px solid var(--color-border);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .scale-input .radio-option input[type="radio"]:checked {
+      border-color: var(--color-primary);
+      background-color: var(--color-primary);
+    }
+    .scale-input .radio-option input[type="radio"]:checked + label strong {
+      color: white;
+    }
+    .scale-input .radio-option label {
+      margin: 0;
+      padding: 0;
+      border: none;
+      box-shadow: none;
+      background: none;
+    }
+    .scale-input .radio-option label:hover {
+      background: none;
+    }
+    .section-intro p:last-child {
+      margin-bottom: 0;
+    }
+    .section-intro strong {
+      display: block;
+    }
+    .radio-option input[type="radio"],
+    .checkbox-option input[type="checkbox"] {
+      accent-color: var(--color-primary);
+      width: 20px;
+      height: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="survey-root"></div>
+  <div id="toast-container" class="toast-container"></div>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
