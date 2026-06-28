@@ -1,2 +1,2 @@
 // Google Apps Script Web App URL - REPLACE WITH YOUR DEPLOYED WEB APP URL
-export const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzPfpExNYuMmeyGGstSCDQQECrhaC8MFXy5K5OJ6L1IsQiWi6EsFnDOjrDhPOuVIHOArg/exec';
+export const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyOr1YzdOVT6IJ9xwY17SSAPvbGXXU9THW2aDTBK8A4V4NxQrcXXfhz-c2IswLQN633UA/exec';
