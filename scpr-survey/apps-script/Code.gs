@@ -50,23 +50,28 @@ function arr_(val) {
  */
 function doPost(e) {
   try {
-    const data = JSON.parse(e.postData.contents);
-    const sheet = getSheet_();
-    const row = [
+    var payload;
+    if (e.parameter && e.parameter.data) {
+      payload = JSON.parse(e.parameter.data);
+    } else {
+      payload = JSON.parse(e.postData.contents);
+    }
+    var sheet = getSheet_();
+    var row = [
       new Date(),
-      data.submissionId || Utilities.getUuid(),
-      data.age || '', data.gender || '', data.grade || '', data.stream || '',
-      data.marks || '', arr_(data.favoriteSubjects), arr_(data.activities),
-      arr_(data.subjectAreas), arr_(data.careerFields),
-      data.problemSolving || '', data.communication || '', data.teamwork || '',
-      data.leadership || '', data.technicalSkills || '', data.creativity || '',
-      data.analyticalThinking || '', data.timeManagement || '', data.adaptability || '',
-      arr_(data.careerPriorities), data.dreamCareer || '',
-      arr_(data.interestedCareers), data.backupCareer || '',
-      data.careerConfidence || '', data.familyInfluence || '',
-      data.counselingAccess || '', arr_(data.skillsToImprove),
-      data.comments || '', data.email || '',
-      data.consent === true, data.anonymity === true
+      payload.submissionId || Utilities.getUuid(),
+      payload.age || '', payload.gender || '', payload.grade || '', payload.stream || '',
+      payload.marks || '', arr_(payload.favoriteSubjects), arr_(payload.activities),
+      arr_(payload.subjectAreas), arr_(payload.careerFields),
+      payload.problemSolving || '', payload.communication || '', payload.teamwork || '',
+      payload.leadership || '', payload.technicalSkills || '', payload.creativity || '',
+      payload.analyticalThinking || '', payload.timeManagement || '', payload.adaptability || '',
+      arr_(payload.careerPriorities), payload.dreamCareer || '',
+      arr_(payload.interestedCareers), payload.backupCareer || '',
+      payload.careerConfidence || '', payload.familyInfluence || '',
+      payload.counselingAccess || '', arr_(payload.skillsToImprove),
+      payload.comments || '', payload.email || '',
+      payload.consent === true, payload.anonymity === true
     ];
     sheet.appendRow(row);
     return jsonOut_({ success: true, message: 'Submission saved', submissionId: row[1] });

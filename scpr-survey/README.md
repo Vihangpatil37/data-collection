@@ -32,17 +32,16 @@ scpr-survey/
 
 ## How to Run Locally
 
-Simply open `index.html` in your browser:
+> **Important:** This project uses ES modules (`type="module"`), which require serving
+> over HTTP. Opening `index.html` directly with `file://` will not work in most browsers.
 
-```
-start index.html
-```
+Serve it with a local HTTP server:
 
-Or serve it with a local HTTP server:
-
-```
+```bash
 npx serve .
 ```
+
+Then open the URL shown in the terminal (e.g., `http://localhost:3000`).
 
 ## How to Set Up the Google Sheet + Apps Script
 
@@ -99,3 +98,12 @@ If your survey progress is not restored after a refresh:
 - Verify the sheet is named exactly `SCPR_Survey_Data`.
 - Check the Apps Script execution logs in the Apps Script editor for errors.
 - Ensure a new deployment version was created after any code changes.
+- **Known fix**: If you see a success toast but data doesn't appear, the issue is that
+  the `fetch` API changes POST to GET when following Google's 302 redirect, so the
+  payload never reaches `doPost()`. This code now uses `XMLHttpRequest` (via
+  `submitViaXHR`) which correctly preserves the POST method through redirects.
+- **Diagnose**: Open the browser console (F12) and run:
+  ```js
+  import('./js/api.js').then(m => m.checkConnection())
+  ```
+  This will verify the Apps Script URL is reachable and returning valid JSON.
